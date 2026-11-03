@@ -23,3 +23,12 @@ app.post("/komik", async (req, res) => {
         res.status(500).send({ message: err.message });
     }
 })
+
+app.get("/komik", async (req, res) => {
+    try{
+        const komik = await db.Komik.findAll();
+        res.send(komik);
+    } catch(err){
+        res.status(500).send({ message: err.message });
+    }
+})
